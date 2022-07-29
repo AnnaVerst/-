@@ -7,12 +7,14 @@ const newEventModal = document.getElementById('newEventModal');
 const deleteEventModal = document.getElementById('deleteEventModal');
 const backDrop = document.getElementById('modalBackDrop');
 const eventTitleInput = document.getElementById('eventTitleInput');
+const eventTitleDate = document.getElementById('eventTitleDate');
 const eventTitleWorker = document.getElementById('eventTitleWorker');
 const today = document.getElementById('today');
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 function openModal(date) {
   clicked = date;
+  
 
   const eventForDay = events.find(e => e.date === clicked);
 
@@ -26,7 +28,6 @@ function openModal(date) {
 
   backDrop.style.display = 'block';
 }
-
 function load() {
   const dt = new Date();
 
@@ -66,6 +67,7 @@ function load() {
 
       if (i - paddingDays === day && nav === 0) {
         daySquare.id = 'currentDay';
+
       }
 
       if (eventForDay) {
@@ -98,6 +100,7 @@ function closeModal() {
   deleteEventModal.style.display = 'none';
   backDrop.style.display = 'none';
   eventTitleInput.value = '';
+  eventTitleDate.value = '';
   eventTitleWorker.value = '';
   clicked = null;
   load();
@@ -149,4 +152,5 @@ function initButtons() {
 initButtons();
 load();
 
+ 
 

@@ -12,13 +12,30 @@ body {
     background-color: #f5f5f5;
     letter-spacing: -0.5px;
 }
-
+header, .header{
+  height: 100%;
+  background: #fff;
+  display: revert;
+}
 .header-top{
     display: flex;
     justify-content: space-between;
     align-items: end;
     height: 80px;
     margin-bottom: 15px;
+    input[type="text"]{
+      width: 250px;
+      font-size: 12px;
+      height: 30px;
+    }
+    input[type='button']{
+      padding: 0 10px;
+      font-size: 10px;
+      margin-bottom: 0;
+      height: 30px;
+      line-height: 0;
+    }
+
 
     &_btn{
         align-items: flex-start;
@@ -82,7 +99,6 @@ body {
   
   #header {
     padding: 30px 0;
-    color: #d36c6c;
     font-size: 26px;
     font-family: sans-serif;
     display: flex;
@@ -120,11 +136,16 @@ body {
   }
   #today{
     height: 20px;
-    font-size: 14px;
+    width: 75px;
+    padding: 0 10px;
+    font-size: 10px;
     cursor: pointer;
     box-shadow: 0px 0px 2px grey;
     border: none;
     border-radius: 3px;
+    margin-bottom: 0;
+    line-height: 0;
+
   }
   #today:hover{
     background-color: rgb(208, 208, 208);
@@ -163,6 +184,7 @@ body {
   
   .day + #currentDay {
     background-color:#f4f4f4;
+    color: #000;
   }
 
   .day .event{
@@ -173,13 +195,12 @@ body {
   .event{
     font-size: 10px;
     padding: 3px;
-    color: white;
+    color: black;
     overflow: hidden;
     width: 100%;
     height: 100%;
     text-transform: capitalize;
     font-weight: bold;
-    background-color: #c2e4fe;
 
     
   }
@@ -191,7 +212,8 @@ body {
     background-color: #FFFCFF !important;
     box-shadow: none !important;
   }
-  #newEventModal, #deleteEventModal {
+  #newEventModal, 
+  #deleteEventModal {
     display: none;
     z-index: 20;
     padding: 25px;
@@ -203,20 +225,12 @@ body {
     left: calc(50% - 175px);
     position: absolute;
     font-family: sans-serif;
+
+    input[type="date"]{
+      margin-bottom: 25px;
+    }
   }
-  #eventTitleInput {
-    padding: 10px;
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 25px;
-    border-radius: 3px;
-    outline: none;
-    border: none;
-    box-shadow: 0px 0px 3px gray;
-  }
-  #eventTitleInput.error {
-    border: 2px solid red;
-  }
+  #eventTitleInput,
   #eventTitleWorker {
     padding: 10px;
     width: 100%;
@@ -226,10 +240,14 @@ body {
     outline: none;
     border: none;
     box-shadow: 0px 0px 3px gray;
+
   }
-  #eventTitleWorker.error {
+  #eventTitleInput.error,
+  #eventTitleWorker.error,
+  #eventDateInputAdd.error {
     border: 2px solid red;
   }
+
   #cancelButton, #deleteButton {
     background-color: #d36c6c;
     width: 90px;
@@ -259,7 +277,54 @@ body {
     left: 0px;
     z-index: 10;
     width: 100vw;
-    height: 100vh;
+    height: 125vh;
     position: absolute;
     background-color: rgba(0,0,0,0.8);
+  }
+
+
+  .calendar div.hide{
+    display: none;
+    // visibility: hidden;
+  }
+
+  #newEventModal, #deleteEventModal{
+    font-size: small;
+  }
+
+  .popup-window{
+    display: none;
+    z-index: 20;
+    padding: 25px;
+    background-color: #e8f4fa;
+    box-shadow: 0px 0px 3px black;
+    border-radius: 5px;
+    width: 350px;
+    top: 100px;
+    left: calc(50% - 175px);
+    position: absolute;
+    font-family: sans-serif;
+
+
+  }
+
+  .popup-input{
+    input{
+      margin-bottom: 10px;
+    }
+  }
+
+  .popup-btn{
+    display: flex;
+    justify-content: center;
+    input[type='button']{
+      padding: 0 10px;
+    }
+    input{
+      font-size: 10px;
+      background-color: #92a1d1;
+      width: 90px;
+      height: 30px;
+      line-height: 0;
+    }
   }
