@@ -7,20 +7,19 @@ const newEventModal = document.getElementById('newEventModal');
 const deleteEventModal = document.getElementById('deleteEventModal');
 const backDrop = document.getElementById('modalBackDrop');
 const eventTitleInput = document.getElementById('eventTitleInput');
-const eventTitleDate = document.getElementById('eventTitleDate');
 const eventTitleWorker = document.getElementById('eventTitleWorker');
 const today = document.getElementById('today');
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 function openModal(date) {
   clicked = date;
-  
 
   const eventForDay = events.find(e => e.date === clicked);
 
   if (eventForDay) {
     document.getElementById('eventText').innerText = eventForDay.title;
     document.getElementById('eventWorker').innerText = eventForDay.body;
+    document.getElementById('evenDescribe').innerText = eventForDay.foot;
     deleteEventModal.style.display = 'block';
   } else {
     newEventModal.style.display = 'block';
@@ -28,6 +27,9 @@ function openModal(date) {
 
   backDrop.style.display = 'block';
 }
+var example = eventTitleDiscribe.value;
+evenDescribe.innerHTML = eventTitleDiscribe.value;
+
 function load() {
   const dt = new Date();
 
@@ -67,7 +69,6 @@ function load() {
 
       if (i - paddingDays === day && nav === 0) {
         daySquare.id = 'currentDay';
-
       }
 
       if (eventForDay) {
@@ -100,8 +101,8 @@ function closeModal() {
   deleteEventModal.style.display = 'none';
   backDrop.style.display = 'none';
   eventTitleInput.value = '';
-  eventTitleDate.value = '';
   eventTitleWorker.value = '';
+  eventTitleDiscribe.value = '';
   clicked = null;
   load();
 }
@@ -115,6 +116,7 @@ function saveEvent() {
       date: clicked,
       title: eventTitleInput.value,
       body: eventTitleWorker.value,
+      foot: eventTitleDiscribe.value,
     });
 
     localStorage.setItem('events', JSON.stringify(events));
